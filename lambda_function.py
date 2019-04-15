@@ -97,8 +97,10 @@ def run_command(command, instances, pem, username):
             stdin, stdout, stderr = client.exec_command(command)
 
             # Add the stdout read to the command output
-            commandOutput += str("\n Output : \n")
+            commandOutput += str("\nOutput : \n")
             commandOutput += str(stdout.read().decode('ascii'))
+            commandOutput += str("\nError : \n")
+            commandOutput += str(stderr.read().decode('ascii'))
 
             # Close the ssh client
             client.close()
